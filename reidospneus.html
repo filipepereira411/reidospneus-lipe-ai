@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipe - O Rei dos Pneus | Acesso</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+            overflow: hidden;
+            border-top: 5px solid #e67e22;
+        }
+        .header {
+            text-align: center;
+            padding: 25px 20px 15px 20px;
+            background: #fff;
+        }
+        .crown {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        h1 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        /* Abas de Navegação */
+        .tabs {
+            display: flex;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #7f8c8d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background: #fff;
+            color: #e67e22;
+            border-bottom: 2px solid #e67e22;
+        }
+        /* Formulários e Conteúdo */
+        .content-section {
+            padding: 25px;
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #34495e;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .form-group input:focus {
+            border-color: #e67e22;
+            outline: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #e67e22;
+            color: white;
+            margin-top: 10px;
+        }
+        .btn-primary:hover {
+            background: #d35400;
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+            margin-top: 8px;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        /* Links Úteis */
+        .form-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        .form-links a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .form-links a:hover {
+            text-decoration: underline;
+        }
+        /* Ecrã de Sucesso/LogOut fictício */
+        .welcome-msg {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .recovery-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .recovery-options label {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            background: #f9f9f9;
+            font-size: 0.9rem;
+        }
+        .recovery-options input {
+            display: none;
+        }
+        .recovery-options input:checked + label {
+            border-color: #e67e22;
+            background: #fdf2e9;
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="crown">👑</div>
+        <h1>Filipe - O Rei dos Pneus</h1>
+    </div>
+
+    <!-- Abas para dividir Cliente e Administração -->
+    <div class="tabs" id="authTabs">
+        <button class="tab-btn active" onclick="switchTab('cliente')">Área Cliente</button>
+        <button class="tab-btn" onclick="switchTab('admin')">Administração</button>
+    </div>
+
+    <!-- ================= VISTA: LOGIN CLIENTE ================= -->
+    <div id="view-cliente-login" class="content-section active">
+        <form onsubmit="handleLogin(event, 'Cliente')">
+            <div class="form-group">
+                <label>E-mail ou Telemóvel</label>
+                <input type="text" required placeholder="Ex: cliente@email.com ou 912345678">
+            </div>
+            <div class="form-group">
+                <label>Palavra-passe</label>
+                <input type="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar como Cliente</button>
+            <div class="form-links">
+                <a href="#" onclick="showView('recovery')">Esqueceu-se da palavra-passe?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- ================= VISTA: LOGIN ADMIN ================= -->
+    <div id="view-admin-login" class="content-section">
+        <form onsubmit="handleLogin(event, 'Administrador')">
+            <div class="form-group">
+                <label>Código de Utilizador</label>
+                <input type="text" required placeholder="Ex: admin_filipe">
+            </div>
+            <div class="form-group">
+                <label>Palavra-passe</label>
+                <input type="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary">Acesso Restrito</button>
+            <div class="form-links">
+                <a href="#" onclick="showView('recovery')">Recuperar acesso admin</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- ================= VISTA: RECUPERAÇÃO (ESQUECI A PASSE) ================= -->
+    <div id="view-recovery" class="content-section">
+        <h3 style="margin-top:0; color:#2c3e50;">Recuperar Palavra-passe</h3>
+        <p style="font-size:0.9rem; color:#7f8c8d;">Escolha o método para receber o link/código de redefinição:</p>
+        
+        <form onsubmit="handleRecovery(event)">
+            <div class="recovery-options">
+                <input type="radio" id="method-email" name="recovery-method" value="email" checked onclick="toggleRecoveryInput('email')">
+                <label for="method-email">📧 E-mail</label>
+
+                <input type="radio" id="method-sms" name="recovery-method" value="sms" onclick="toggleRecoveryInput('sms')">
+                <label for="method-sms">💬 SMS</label>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <label id="recovery-label">Introduza o seu E-mail</label>
+                <input type="text" id="recovery-input" required placeholder="Ex: seu@email.com">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Código</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelRecovery()">Voltar</button>
+        </form>
+    </div>
+
+    <!-- ================= VISTA: DASHBOARD / LOGOUT ================= -->
+    <div id="view-dashboard" class="content-section">
+        <div class="welcome-msg">
+            <h2 style="color: #27nav60; margin: 0 0 10px 0;">✓ Sessão Iniciada</h2>
+            <p>Bem-vindo à sua área de <strong id="user-profile">Perfil</strong>.</p>
+            <p style="font-size: 0.9rem; color:#7f8c8d;">Dados protegidos e sessão segura.</p>
+            <button class="btn btn-secondary" onclick="handleLogout()">Terminar Sessão (Logout)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentProfile = 'cliente'; // Estado para saber se estamos em cliente ou admin
+
+    // Alternar entre as abas Cliente e Admin
+    function switchTab(profile) {
+        currentProfile = profile;
+        
+        // Atualizar estado visual dos botões
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Esconder formulários de login
+        document.getElementById('view-cliente-login').classList.remove('active');
+        document.getElementById('view-admin-login').classList.remove('active');
+        document.getElementById('view-recovery').classList.remove('active');
+        document.getElementById('view-dashboard').classList.remove('active');
+
+        // Ativar a aba e o formulário correto
+        if(profile === 'cliente') {
+            buttons[0].classList.add('active');
+            document.getElementById('view-cliente-login').classList.add('active');
+        } else {
+            buttons[1].classList.add('active');
+            document.getElementById('view-admin-login').classList.add('active');
+        }
+        // Mostrar as abas caso tivessem sido escondidas na vista de recuperação/dashboard
+        document.getElementById('authTabs').style.display = 'flex';
+    }
+
+    // Navegar entre vistas específicas de forma direta
+    function showView(view) {
+        document.getElementById('view-cliente-login').classList.remove('active');
+        document.getElementById('view-admin-login').classList.remove('active');
+        document.getElementById('view-recovery').classList.remove('active');
