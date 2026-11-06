@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Filipe - O Rei dos Pneus</title>
+<style>
+:root{color-scheme:light dark;--bg:#f6f3ea;--fg:#17171a;--pn:#fff;--bd:#e3ddc9;--ac:#f2b705;--ac2:#111;--mut:#6f6b5e;--gold:#a47a00;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d0f;--fg:#f0eee6;--pn:#17171b;--bd:#2c2c33;--mut:#9b9aa0;--gold:#f2b705}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,sans-serif}
+nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;padding:10px 16px;background:#0d0d0f;color:#f0eee6;border-bottom:3px solid var(--ac);position:sticky;top:0;z-index:5}
+.logo{font-weight:800;font-size:18px;margin-right:auto}.logo b{color:var(--ac)}
+nav a{color:inherit;text-decoration:none;padding:6px 11px;border-radius:99px;font-size:14px}
+nav a:hover{background:#26262c}nav a.on{background:var(--ac);color:#111;font-weight:700}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 50px}
+h1{margin:0 0 4px;font-size:26px}h2{margin:26px 0 12px;font-size:19px}.sub{color:var(--mut);margin:0 0 16px}
+a{color:var(--gold)}
+.hero{background:linear-gradient(115deg,#0d0d0f 55%,#3a2d03);color:#fff;border-radius:18px;padding:38px 28px;margin-bottom:16px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:50%;width:260px;height:260px;margin-top:-130px;border-radius:50%;background:radial-gradient(circle,#f2b705 0 9%,#8a8a8a 10% 24%,#161616 25% 100%);box-shadow:0 0 0 8px #2a2a2a;opacity:.9}
+.hero h1{font-size:clamp(26px,5vw,40px);max-width:520px;line-height:1.1;margin:12px 0 8px}.hero p{max-width:480px;color:#d8d5c8;margin:0 0 18px}
+.ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+input,select,button{font:inherit;color:inherit;background:var(--pn);border:1px solid var(--bd);border-radius:10px;padding:9px 12px}
+.bar input{flex:1;min-width:200px}
+button{cursor:pointer}button.p{background:var(--ac);color:var(--ac2);border-color:var(--ac);font-weight:700}button.p:hover{filter:brightness(1.07)}
+button:disabled{opacity:.45;cursor:not-allowed}button.s{padding:4px 9px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:5px;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:var(--ac)}
+.tire{width:92px;height:92px;border-radius:50%;margin:4px auto 10px;background:radial-gradient(circle,#f2b705 0 9%,#999 10% 25%,#161616 26% 100%);box-shadow:0 0 0 5px #2c2c2c}
+.card b{font-size:17px}
+.mut{color:var(--mut);font-size:13px}.pr{font-size:22px;font-weight:800;margin:4px 0 6px}.pr small{font-size:12px;font-weight:400;color:var(--mut)}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;background:var(--bd)}.tag.warn{background:#ffe08a;color:#5a4200}.tag.bad{background:#f3b4b4;color:#6a1111}
+.box{background:var(--pn);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+form{display:flex;flex-direction:column;gap:8px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--bd);vertical-align:middle}th{font-size:12px;color:var(--mut);text-transform:uppercase}
+td input{width:90px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:10px}
+.stat{background:var(--pn);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:10px;padding:12px}.stat b{display:block;font-size:22px}
+.tabs{display:flex;gap:6px;margin:14px 0}.tabs button.on{background:var(--ac);color:#111;border-color:var(--ac);font-weight:700}
+.mb{display:inline-block;background:#d3122d;color:#fff;padding:4px 12px;border-radius:6px;margin-bottom:10px;font-weight:800;letter-spacing:.5px}
+footer{text-align:center;padding:22px 16px calc(22px + env(safe-area-inset-bottom,0px));background:#0d0d0f;color:#9b9aa0;font-size:13px;border-top:3px solid var(--ac)}footer b{color:var(--ac)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ac);color:#111;font-weight:600;padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+<main id="app"></main>
+<footer><b>👑 Filipe - O Rei dos Pneus</b><br>Pneus novos com garantia · Pagamento MB WAY · Entrega em 24–48h</footer>
+<div id="toast"></div>
+<script>
+const K='reidospneus',ESTADOS=['Pendente','Paga','Enviada','Entregue','Cancelada'],TIPOS=['Verão','Inverno','Todas as estações'];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]),eur=n=>Number(n).toLocaleString('pt-PT',{style:'currency',currency:'EUR'});
+function seed(){const p=[['Michelin','Primacy 4','205/55 R16','Verão',109,24],['Continental','PremiumContact 6','225/45 R17','Verão',128,16],['Pirelli','Cinturato P7','195/65 R15','Verão',82,30],['Goodyear','Vector 4Seasons','205/55 R16','Todas as estações',97,20],['Bridgestone','Blizzak LM005','225/50 R17','Inverno',134,8],['Hankook','Kinergy 4S2','215/60 R16','Todas as estações',91,18],['Nokian','Seasonproof','195/65 R15','Todas as estações',79,12],['Michelin','CrossClimate 2','225/45 R17','Todas as estações',139,3]];
+return{products:p.map((x,i)=>({id:i+1,marca:x[0],modelo:x[1],medida:x[2],tipo:x[3],preco:x[4],stock:x[5]})),users:[],orders:[],session:null,cart:[]}}
+let S=(()=>{try{const s=JSON.parse(localStorage.getItem(K));if(s&&s.products)return s}catch(e){}return seed()})(),tab='enc';
+S.admin=S.admin||{user:'admin',pw:'admin'};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2200)}
+const P=id=>S.products.find(p=>p.id==id),nCart=()=>S.cart.reduce((a,c)=>a+c.q,0);
+function nav(){const h=(location.hash||'#loja').slice(1),s=S.session,l=(k,t)=>`<a href="#${k}" class="${h==k?'on':''}">${t}</a>`;
+$('#nav').innerHTML=`<span class="logo">👑 Filipe <b>· O Rei dos Pneus</b></span>${l('loja','Loja')}${l('carrinho','Carrinho ('+nCart()+')')}${l('conta',s&&s.role=='cliente'?'A minha conta':'Entrar')}${l('admin','Admin')}${s?`<a href="#" onclick="logout();return false">Sair</a>`:''}`}
+function route(){const h=(location.hash||'#loja').slice(1);({loja,carrinho,conta,admin,recuperar,recuperaradmin}[h]||loja)();nav();scrollTo(0,0)}
+addEventListener('hashchange',route);
+// ---- loja ----
+function loja(){$('#app').innerHTML=`<section class="hero"><span class="tag" style="background:#f2b705;color:#111;font-weight:700">👑 O Rei dos Pneus</span><h1>Os melhores pneus, ao melhor preço.</h1><p>Verão, inverno e todas as estações. Pague com MB WAY e receba em 24–48h.</p><button class="p" onclick="document.getElementById('cat').scrollIntoView({behavior:'smooth'})">Ver catálogo</button></section><div class="ben"><div class="box">🚚 <b>Entrega 24–48h</b><br><span class="mut">Portugal continental</span></div><div class="box">📱 <b>Pague com MB WAY</b><br><span class="mut">Rápido e seguro</span></div><div class="box">🛞 <b>Marcas premium</b><br><span class="mut">Michelin, Pirelli, Continental…</span></div></div><h2 id="cat">Catálogo</h2><div class="bar"><input id="q" placeholder="Pesquisar marca, modelo ou medida (ex.: 205/55)" oninput="grid()"><select id="t" onchange="grid()"><option value="">Todos os tipos</option>${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select><select id="o" onchange="grid()"><option value="">Ordenar</option><option value="a">Preço: menor primeiro</option><option value="d">Preço: maior primeiro</option></select></div><div id="grid" class="grid"></div>`;grid()}
+function grid(){const q=$('#q').value.toLowerCase(),t=$('#t').value,o=$('#o').value;
+const r=S.products.filter(p=>(!t||p.tipo==t)&&(p.marca+' '+p.modelo+' '+p.medida).toLowerCase().includes(q));
+if(o)r.sort((a,b)=>o=='a'?a.preco-b.preco:b.preco-a.preco);
+$('#grid').innerHTML=r.length?r.map(p=>`<div class="card"><div class="tire"></div><span class="mut">${esc(p.marca)}</span><b>${esc(p.modelo)}</b><span class="mut">${esc(p.medida)}</span><span><span class="tag">${({'Verão':'☀️','Inverno':'❄️'})[p.tipo]||'🔄'} ${esc(p.tipo)}</span> ${p.stock<1?'<span class="tag bad">Esgotado</span>':p.stock<5?`<span class="tag warn">Últimas ${p.stock}</span>`:''}</span><span class="pr">${eur(p.preco)} <small>/un.</small></span><button class="p" ${p.stock<1?'disabled':''} onclick="add(${p.id})">Adicionar ao carrinho</button></div>`).join(''):'<p class="mut">Nenhum pneu encontrado.</p>'}
+function add(id){const p=P(id),c=S.cart.find(x=>x.id==id),q=(c?c.q:0)+1;if(q>p.stock)return toast('Stock máximo atingido');c?c.q=q:S.cart.push({id,q});save();nav();toast('Adicionado ao carrinho')}
+// ---- carrinho ----
+function carrinho(){const L=S.cart.filter(c=>P(c.id)),tot=L.reduce((a,c)=>a+c.q*P(c.id).preco,0);
+$('#app').innerHTML=`<h1>Carrinho</h1>`+(L.length?`<div class="box tw"><table><tr><th>Pneu</th><th>Preço</th><th>Qtd.</th><th>Subtotal</th><th></th></tr>${L.map(c=>{const p=P(c.id);return`<tr><td>${esc(p.marca)} ${esc(p.modelo)}<br><span class="mut">${esc(p.medida)}</span></td><td>${eur(p.preco)}</td><td><button class="s" onclick="qty(${c.id},-1)">−</button> ${c.q} <button class="s" onclick="qty(${c.id},1)">+</button></td><td>${eur(c.q*p.preco)}</td><td><button class="s" onclick="qty(${c.id},-99)">Remover</button></td></tr>`}).join('')}</table></div><h2>Total: ${eur(tot)}</h2><button class="p" onclick="checkout()">Finalizar encomenda</button>`:`<p class="mut">O carrinho está vazio. <a href="#loja">Ver pneus</a></p>`)}
+function qty(id,d){const c=S.cart.find(x=>x.id==id);c.q+=d;if(d>0&&c.q>P(id).stock)c.q=P(id).stock;if(c.q<1)S.cart=S.cart.filter(x=>x.id!=id);save();nav();carrinho()}
+const nifOk=n=>{if(!/^\d{9}$/.test(n))return false;const d=[...n].map(Number);let t=0;for(let i=0;i<8;i++)t+=d[i]*(9-i);let c=11-t%11;if(c>=10)c=0;return d[8]==c};
+function checkout(){const s=S.session;if(!s||s.role!='cliente'){toast('Inicie sessão para finalizar');location.hash='#conta';return}
+const u=S.users.find(x=>x.email==s.email)||{},tot=S.cart.reduce((a,c)=>a+(P(c.id)?c.q*P(c.id).preco:0),0),v=k=>esc(u[k]||'');
+$('#app').innerHTML=`<h1>Finalizar encomenda</h1><div class="box" style="max-width:460px"><p>Total (IVA incluído): <b>${eur(tot)}</b></p><form onsubmit="return pay(event)"><h2 style="margin:0">Entrega e faturação</h2><input name="nome" value="${esc(s.nome)}" placeholder="Nome completo" required><input name="morada" value="${v('morada')}" placeholder="Morada" required><div class="bar" style="margin:0"><input name="cp" value="${v('cp')}" placeholder="Código postal (0000-000)" maxlength="8" required><input name="loc" value="${v('loc')}" placeholder="Localidade" required></div><input name="nif" value="${v('nif')}" inputmode="numeric" maxlength="9" placeholder="NIF (opcional, para fatura)"><h2 style="margin:8px 0 0">Pagamento</h2><div class="mb">MB WAY</div><input name="tel" inputmode="numeric" maxlength="9" placeholder="Telemóvel MB WAY (9 dígitos)" required><button class="p" id="pb">Pagar com MB WAY</button></form><p class="mut" id="ps">Vai receber um pedido de pagamento na app MB WAY.</p></div>`}
+function pay(ev){const f=fd(ev);if(!/^\d{4}-\d{3}$/.test(f.cp)){toast('Código postal inválido');return false}
+if(f.nif&&!nifOk(f.nif)){toast('NIF inválido');return false}
+if(!/^9[1236]\d{7}$/.test(f.tel)){toast('Número de telemóvel inválido');return false}
+$('#pb').disabled=true;let n=5;const ps=$('#ps');ps.textContent='Pedido enviado para o '+f.tel.slice(0,3)+' *** '+f.tel.slice(6)+'. A aguardar aprovação… '+n+'s';
+const t=setInterval(()=>{n--;ps.textContent='A aguardar aprovação na app MB WAY… '+n+'s';if(n<=0){clearInterval(t);finish(f)}},1000);return false}
+function finish(f){const s=S.session,items=S.cart.filter(c=>P(c.id)).map(c=>({desc:P(c.id).marca+' '+P(c.id).modelo+' '+P(c.id).medida,q:c.q,preco:P(c.id).preco}));
+S.cart.forEach(c=>{const p=P(c.id);if(p)p.stock=Math.max(0,p.stock-c.q)});
+const u=S.users.find(x=>x.email==s.email);if(u)Object.assign(u,{morada:f.morada,cp:f.cp,loc:f.loc,nif:f.nif});
+S.orders.unshift({id:1000+S.orders.length+1,email:s.email,nome:f.nome,morada:f.morada+', '+f.cp+' '+f.loc,nif:f.nif,items,total:items.reduce((a,i)=>a+i.q*i.preco,0),estado:'Paga',pag:'MB WAY ···'+f.tel.slice(-3),data:new Date().toLocaleDateString('pt-PT')});
+S.cart=[];save();toast('Pagamento MB WAY confirmado!');location.hash='#conta'}
+function fatura(id){const o=S.orders.find(x=>x.id==id);if(!o)return;const base=o.total/1.23,w=open('','_blank');if(!w)return toast('Permita pop-ups');
+w.document.write(`<!doctype html><meta charset="utf-8"><title>Fatura FT-${o.id}</title><style>body{font:14px system-ui;max-width:700px;margin:30px auto;padding:0 16px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid #ccc}.r{text-align:right}@media print{button{display:none}}</style><h1>👑 Filipe - O Rei dos Pneus</h1><p>Fatura-recibo (demo) FT-${o.id} · ${o.data}</p><p><b>${esc(o.nome)}</b><br>${esc(o.morada||'')}<br>NIF: ${esc(o.nif||'Consumidor final')}</p><table><tr><th>Descrição</th><th class="r">Qtd.</th><th class="r">Preço</th><th class="r">Total</th></tr>${o.items.map(i=>`<tr><td>${esc(i.desc)}</td><td class="r">${i.q}</td><td class="r">${eur(i.preco)}</td><td class="r">${eur(i.q*i.preco)}</td></tr>`).join('')}</table><p class="r">Base: ${eur(base)}<br>IVA 23%: ${eur(o.total-base)}<br><b>Total: ${eur(o.total)}</b></p><p>Pago por ${esc(o.pag||'')}</p><button onclick="print()">Imprimir / guardar PDF</button>`);w.document.close()}
+// ---- conta ----
+function conta(){const s=S.session;
+if(s&&s.role=='cliente'){const o=S.orders.filter(x=>x.email==s.email);$('#app').innerHTML=`<h1>Olá, ${esc(s.nome)}</h1><p class="sub">${esc(s.email)}</p><button onclick="logout()">Terminar sessão</button><h2>As minhas encomendas</h2>`+(o.length?o.map(x=>`<div class="box" style="margin-bottom:10px"><b>#${x.id}</b> · ${x.data} · <span class="tag">${x.estado}</span> · ${esc(x.pag||"")}<br>${x.items.map(i=>`${i.q}× ${esc(i.desc)}`).join('<br>')}<br><b>${eur(x.total)}</b> <button class="s" onclick="fatura(${x.id})">Fatura</button></div>`).join(''):'<p class="mut">Ainda não fez nenhuma encomenda.</p>');return}
+$('#app').innerHTML=`<h1>Área de cliente</h1><div class="two"><div class="box"><h2 style="margin-top:0">Entrar</h2><form onsubmit="return login(event)"><input name="email" type="email" placeholder="Email" required><input name="pw" type="password" placeholder="Palavra-passe" required><button class="p">Entrar</button></form><p style="margin:10px 0 0"><a href="#recuperar">Esqueci a palavra-passe</a></p></div><div class="box"><h2 style="margin-top:0">Criar conta</h2><form onsubmit="return reg(event)"><input name="nome" placeholder="Nome" required><input name="email" type="email" placeholder="Email" required><input name="pw" type="password" placeholder="Palavra-passe" minlength="4" required><button class="p">Registar</button></form></div></div>`}
+const fd=ev=>{ev.preventDefault();return Object.fromEntries(new FormData(ev.target))};
+function reg(ev){const f=fd(ev);f.email=f.email.toLowerCase();if(S.users.some(u=>u.email==f.email)){toast('Email já registado');return false}S.users.push(f);S.session={role:'cliente',email:f.email,nome:f.nome};save();toast('Conta criada');route();return false}
+function login(ev){const f=fd(ev),u=S.users.find(u=>u.email==f.email.toLowerCase()&&u.pw==f.pw);if(!u){toast('Dados inválidos');return false}S.session={role:'cliente',email:u.email,nome:u.nome};save();route();return false}
+function logout(){S.session=null;save();location.hash='#loja';route()}
+// ---- recuperar palavra-passe ----
+let RST=null;
+function recuperar(){rec(false)}function recuperaradmin(){rec(true)}
+function rec(adm){$('#app').innerHTML=`<h1>Recuperar palavra-passe${adm?' (admin)':''}</h1><div class="box" style="max-width:400px">`+(RST&&RST.adm==adm?`<p class="mut">Código enviado. <b>Demo:</b> sem servidor de email, o código aparece aqui: <span class="tag">${RST.code}</span></p><form onsubmit="return rec2(event,${adm})"><input name="code" inputmode="numeric" maxlength="6" placeholder="Código de 6 dígitos" required><input name="pw" type="password" minlength="4" placeholder="Nova palavra-passe" required><button class="p">Alterar palavra-passe</button></form>`:`<form onsubmit="return rec1(event,${adm})"><input name="k" ${adm?'':'type="email"'} placeholder="${adm?'Utilizador':'Email'}" required><button class="p">Enviar código</button></form>`)+`<p><a href="#${adm?'admin':'conta'}">← Voltar ao login</a></p></div>`}
+function rec1(ev,adm){const f=fd(ev),k=f.k.trim().toLowerCase(),ok=adm?k==S.admin.user.toLowerCase():S.users.some(u=>u.email==k);if(!ok){toast(adm?'Utilizador não encontrado':'Email não registado');return false}RST={adm,k,code:String(Math.floor(100000+Math.random()*900000))};rec(adm);return false}
+function rec2(ev,adm){const f=fd(ev);if(f.code!=RST.code){toast('Código incorreto');return false}if(adm)S.admin.pw=f.pw;else S.users.find(u=>u.email==RST.k).pw=f.pw;RST=null;save();toast('Palavra-passe alterada');location.hash=adm?'#admin':'#conta';return false}
+// ---- admin ----
+function admin(){const s=S.session;
+if(!s||s.role!='admin'){$('#app').innerHTML=`<h1>Área de administração</h1><div class="box" style="max-width:360px"><form onsubmit="return alogin(event)"><input name="user" placeholder="Utilizador" required><input name="pw" type="password" placeholder="Palavra-passe" required><button class="p">Entrar</button></form><p style="margin:10px 0 0"><a href="#recuperaradmin">Esqueci a palavra-passe</a></p><p class="mut">Demo: admin / admin</p></div>`;return}
+const fat=S.orders.filter(o=>o.estado!='Cancelada').reduce((a,o)=>a+o.total,0),low=S.products.filter(p=>p.stock<5).length;
+$('#app').innerHTML=`<h1>Painel de administração</h1><div class="stats"><div class="stat">Encomendas<b>${S.orders.length}</b></div><div class="stat">Faturação<b>${eur(fat)}</b></div><div class="stat">Clientes<b>${S.users.length}</b></div><div class="stat">Stock baixo<b>${low}</b></div></div><div class="tabs"><button class="${tab=='enc'?'on':''}" onclick="tab='enc';admin()">Encomendas</button><button class="${tab=='prod'?'on':''}" onclick="tab='prod';admin()">Produtos</button></div>`+(tab=='enc'?encs():prods())}
+function alogin(ev){const f=fd(ev);if(f.user==S.admin.user&&f.pw==S.admin.pw){S.session={role:'admin',email:'admin',nome:'Admin'};save();route()}else toast('Credenciais inválidas');return false}
+function encs(){return`<div class="box tw"><table><tr><th>#</th><th>Cliente</th><th>Artigos</th><th>Total</th><th>Estado</th></tr>${S.orders.map(o=>`<tr><td>${o.id}<br><span class="mut">${o.data}</span></td><td>${esc(o.nome)}<br><span class="mut">${esc(o.email)}<br>${esc(o.morada||'')}</span></td><td>${o.items.map(i=>`${i.q}× ${esc(i.desc)}`).join('<br>')}</td><td>${eur(o.total)}<br><span class="mut">${esc(o.pag||"")}</span><br><button class="s" onclick="fatura(${o.id})">Fatura</button></td><td><select onchange="setE(${o.id},this.value)">${ESTADOS.map(e=>`<option ${e==o.estado?'selected':''}>${e}</option>`).join('')}</select></td></tr>`).join('')||'<tr><td colspan="5" class="mut">Sem encomendas.</td></tr>'}</table></div>`}
+function setE(id,v){S.orders.find(o=>o.id==id).estado=v;save();toast('Estado atualizado')}
+function prods(){return`<div class="box tw"><table><tr><th>Pneu</th><th>Preço (€)</th><th>Stock</th><th></th></tr>${S.products.map(p=>`<tr><td>${esc(p.marca)} ${esc(p.modelo)}<br><span class="mut">${esc(p.medida)} · ${esc(p.tipo)}</span></td><td><input type="number" min="0" step="0.01" value="${p.preco}" onchange="upd(${p.id},'preco',this.value)"></td><td><input type="number" min="0" value="${p.stock}" onchange="upd(${p.id},'stock',this.value)"></td><td><button class="s" onclick="del(${p.id})">Apagar</button></td></tr>`).join('')}</table></div><h2>Novo produto</h2><div class="box"><form onsubmit="return addP(event)"><div class="bar" style="margin:0"><input name="marca" placeholder="Marca" required><input name="modelo" placeholder="Modelo" required><input name="medida" placeholder="Medida (205/55 R16)" required></div><div class="bar" style="margin:0"><select name="tipo">${TIPOS.map(t=>`<option>${t}</option>`).join('')}</select><input name="preco" type="number" min="0" step="0.01" placeholder="Preço €" required><input name="stock" type="number" min="0" placeholder="Stock" required><button class="p">Adicionar</button></div></form></div>`}
+function upd(id,k,v){P(id)[k]=Math.max(0,+v);save();toast('Guardado')}
+function del(id){if(!confirm('Apagar este produto?'))return;S.products=S.products.filter(p=>p.id!=id);S.cart=S.cart.filter(c=>c.id!=id);save();admin()}
+function addP(ev){const f=fd(ev);S.products.push({id:Math.max(0,...S.products.map(p=>p.id))+1,marca:f.marca,modelo:f.modelo,medida:f.medida,tipo:f.tipo,preco:+f.preco,stock:+f.stock});save();toast('Produto adicionado');admin();return false}
+route();
+</script>
+</body>
+</html>
